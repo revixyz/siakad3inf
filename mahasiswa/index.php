@@ -3,9 +3,9 @@ error_reporting(E_ALL);
 ini_set('display_errors',1);
 
 session_start();
-if($_SESSION['isLogin'] != true or $_SESSION['level'] != "admin" or $_SESSION['level'] != "mhs" or $_SESSION['level'] != "dosen"){
-  
-}
+require_once "../auth.php";
+require_level('mahasiswa');
+
 
 
 ?>

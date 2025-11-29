@@ -2,9 +2,9 @@
 error_reporting(0);
 
 session_start();
-if($_SESSION['isLogin'] != true or $_SESSION['level'] != "admin" and $_SESSION['level'] != "mhs" and $_SESSION['level'] != "dosen"){
-  
-}
+require_once "../auth.php";
+require_level('admin');
+
 
 ?>
 <!doctype html>
