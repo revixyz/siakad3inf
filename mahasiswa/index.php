@@ -2,9 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors',1);
 
-session_start();
-require_once "../auth.php";
-require_level('mahasiswa');
+include '../required_level.php';
+require_level('mhs');
 
 
 
@@ -228,7 +227,7 @@ require_level('mahasiswa');
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
-                <span class="d-none d-md-inline">Admin</span>
+                <span class="d-none d-md-inline">Mahasiswa</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
@@ -239,7 +238,7 @@ require_level('mahasiswa');
                     alt="User Image"
                   />
                   <p>
-                    User - Admin
+                    User - Mahasiswa
                   </p>
                 </li>
                 <!--end::User Image-->
@@ -298,13 +297,13 @@ require_level('mahasiswa');
                 </a>
 
               <li class="nav-item">
-                <a href="../dosen/?p=dosen" class="nav-link">
+                <a href="./?p=dosen" class="nav-link">
                   <p>
                     Dosen
                   </p>
                 </a>
                <li class="nav-item">
-            <a href="../admin/?p=admin" class="nav-link">
+            <a href="./?p=admin" class="nav-link">
               <p>
                 Admin
               </p>

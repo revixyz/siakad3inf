@@ -1,10 +1,8 @@
 <?php
 error_reporting(0);
 
-session_start();
-require_once "../auth.php";
+include '../required_level.php';
 require_level('admin');
-
 
 ?>
 <!doctype html>
@@ -289,14 +287,14 @@ require_level('admin');
             >
             
              <li class="nav-item">
-                <a href="../mahasiswa/?p=mahasiswa" class="nav-link">
+                <a href="./?p=mahasiswa" class="nav-link">
                   <p>
                     Mahasiswa
                   </p>
                 </a>
 
               <li class="nav-item">
-                <a href="../dosen/?p=dosen" class="nav-link">
+                <a href="./?p=dosen" class="nav-link">
                   <p>
                     Dosen
                   </p>

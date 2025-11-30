@@ -1,3 +1,7 @@
+<?php
+error_reporting(0);
+?>
+
 <main class="app-main">
         <!--begin::App Content Header-->
         <div class="app-content-header">

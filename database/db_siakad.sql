@@ -16,6 +16,38 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `admin` (
+  `id_admin` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL,
+  `id_dosen` int NOT NULL,
+  `prodi` varchar(30) NOT NULL,
+  `bimbingan` varchar(50) NOT NULL,
+  `tgl_bimbingan` datetime NOT NULL,
+  PRIMARY KEY (`id_admin`),
+  KEY `id` (`id`),
+  KEY `id_dosen` (`id_dosen`),
+  CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mhs` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `admin_ibfk_2` FOREIGN KEY (`id_dosen`) REFERENCES `dosen` (`id_dosen`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin`
+--
+
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (1,12,1,'Informatika','Konsultasi KRS','2025-11-30 04:35:09'),(2,15,3,'Arsitektur','Konsultasi masalah studi','2025-11-30 04:36:10');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `dosen`
 --
 
@@ -106,4 +138,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-11-26 14:04:49
+-- Dump completed on 2025-11-30 11:51:18

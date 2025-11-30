@@ -64,51 +64,19 @@ error_reporting(0);
   <body class="login-page bg-body-secondary">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../index2.html"><b>Admin</b>LTE</a>
+        <a href="./"><b>SIAKAD</b></a>
       </div>
       <!-- /.login-logo -->
       <div class="card">
         <div class="card-body login-card-body">
-          <?php
-          if($_POST['btnLogin']){
-            $tuser = $_POST['tuser'];
-            $tpass = $_POST['tpass'];
-            // if($user=="admin" AND $pass=="admin"){
-            //   $_SESSION['admin']=$user;
-            //   echo"<script>document.location.href='index.php';</script>";
-            // }else{
-            //   echo"<div class='alert alert-danger'>Login Gagal !!</div>";
-            // }
-            require_once("config.php");
-            $sql="SELECT *FROM users WHERE username='$tuser' AND password=MD5('$tpass')";
-            $hasil=$db->query($sql);
-            $level=$hasil->fetch_array();
-            $jml=$hasil->num_rows;
-            if($jml > 0){
-                session_start();
-                $_SESSION['isLogin']=true;
-                $_SESSION['user']=$tuser;
-                $_SESSION['level']=$level['level'];
-                if ($_SESSION['level']=="admin"){
-                    header("Location:admin/?p=admin");
-                }elseif($_SESSION['level']=="dosen"){
-                    header("Location:dosen/?p=dosen");
-                }elseif($_SESSION['level']=="mhs"){
-                    header("Location:mahasiswa/?p=mahasiswa");  
-                }
-          }else{
-              echo"<div class='alert alert-danger alert-dismissible'>Username atau Password Salah!</div>";
-          }
-        }
-
-          ?>
-          <form action="#" method="post">
+          
+          <form action="proses_login.php" method="post">
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Username" name="tuser" required/>
+              <input type="text" class="form-control" placeholder="Username" name="username" required/>
               <div class="input-group-text"><span class="bi bi-people"></span></div>
             </div>
             <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Password" name="tpass" required/>
+              <input type="password" class="form-control" placeholder="Password" name="password" required/>
               <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
             </div>
             <!--begin::Row-->
