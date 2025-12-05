@@ -49,15 +49,15 @@
                     // $simpan=$db->query($db);
                     $tes = $db->query($sql);
                     if ($tes) {
-        echo "<script>
-                window.location='?p=mahasiswa';
-              </script>";
-    } else {
-        echo "<div class='alert alert-danger'>
-                Gagal menyimpan data: " . $db->error . "
-              </div>";
-    }
-                    
+                        echo "<script>
+                                window.location='?p=mahasiswa';
+                              </script>";
+                    } else {
+                        echo "<div class='alert alert-danger'>
+                                Gagal menyimpan data: " . $db->error . "
+                              </div>";
+                    }
+                                    
                 }
                 ?>
 

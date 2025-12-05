@@ -1,7 +1,15 @@
 <?php
+error_reporting(0);
+
 require_once "../config.php";
 
-$data=$db->query("SELECT * FROM admin");
+
+$sql= "SELECT tb_admin.id_admin, mhs.nama AS nama_mhs, dosen.nama AS nama_dosen, tb_admin.prodi, tb_admin.bimbingan, tb_admin.tgl_bimbingan
+FROM tb_admin 
+INNER JOIN mhs ON tb_admin.id = mhs.id
+INNER JOIN dosen ON tb_admin.id_dosen = dosen.id_dosen";
+$data=$db->query($sql);
+
 //var_dump($data);
 ?>
 
@@ -60,17 +68,16 @@ $data=$db->query("SELECT * FROM admin");
                       <tr><th>No</th><th>Nama Mahasiswa</th><th>Nama Dosen</th><th>Prodi</th><th>Bimbingan</th><th>Tgl Bimbingan</th><th>Opsi</th></tr>
                     </thead>
                     <tbody>
-                      <?php
-                     $no=0;
-                      foreach($data as $d){ //foreach adalah perulangan dalam data dalam variabel data diatas (query)
+                      <?php while ($d=mysqli_fetch_assoc($data))  { ?> 
+                        <?php 
                         $no++;
-
+                        
                         
                          
                         echo "<tr>
                         <td>{$no}</td>
-                        <td>$d[id]</td>
-                        <td>$d[id_dosen]</td>
+                        <td>$d[nama_mhs]</td>
+                        <td>$d[nama_dosen]</td>
                         <td>$d[prodi]</td>
                         <td>$d[bimbingan]</td>
                         <td>$d[tgl_bimbingan]</td>
@@ -80,6 +87,8 @@ $data=$db->query("SELECT * FROM admin");
                         <a href='../admin?p=hapusadmin&id_admin=$d[id_admin]' class='btn btn-sm btn-danger' onclick='return confirm(\"Yakin Hapus Data?\")'>Hapus</a>
                         </td>
                         </tr>";
+                        ?>
+                        <?php
                       }
                       ?>                                      
                     </table>

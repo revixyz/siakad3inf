@@ -1,8 +1,15 @@
 <?php
-error_reporting(0);
-require_once "../config.php";
+$idx=$_GET['id_admin'];
 
-$data=$db->query("SELECT * FROM dosen");
+require_once "../config.php";
+$sql_join= "SELECT tb_admin.id_admin, mhs.nama AS nama_mhs, dosen.nama AS nama_dosen, tb_admin.prodi, tb_admin.bimbingan, tb_admin.tgl_bimbingan
+FROM tb_admin 
+INNER JOIN mhs ON tb_admin.id = mhs.id
+INNER JOIN dosen ON tb_admin.id_dosen = dosen.id_dosen WHERE tb_admin.id_admin='$idx'";
+$data_join=$db->query($sql_join);
+
+
+
 //var_dump($data);
 ?>
 
@@ -15,7 +22,7 @@ $data=$db->query("SELECT * FROM dosen");
             <!--begin::Row-->
             <div class="row">
               <!--begin::Col-->
-              <div class="col-sm-6"><h3 class="mb-0">Dashboard Dosen</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">Detail Dosen</h3></div>
               <!--end::Col-->
               
             </div>
@@ -55,38 +62,25 @@ $data=$db->query("SELECT * FROM dosen");
                       </button>
                     </div>
                     <!--end::Card Toolbar-->
-                    <a href="../dosen?p=tambahdosen" class="btn btn-sm btn-success mb-3">Tambah</a>
-                    <table class="table table-striped table-however">
-                    <thead>
-                      <tr><th>No</th><th>NIDN</th><th>Nama</th><th>Gender</th><th>Email</th><th>Opsi</th></tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                     $no=0;
-                      foreach($data as $d){ //foreach adalah perulangan dalam data dalam variabel data diatas (query)
-                        $no++;
+                    <!-- here -->
+                     <div class="col-md-6">
+                    <table class="table table-bordered">
+                        <?php
+                        foreach($data_join as $d){
+                            
+                                 echo "<tr><td>NAMA MAHASISWA</td><td>$d[nama_mhs]</td></tr>";
+                                 echo "<tr><td>NAMA DOSEN</td><td>$d[nama_dosen]</td></tr>";
+                                 echo "<tr><td>PRODI</td><td>$d[prodi]</td></tr>";
+                                 echo "<tr><td>BIMBINGAN</td><td>$d[bimbingan]</td></tr>";
+                                 echo "<tr><td>TGL BIMBINGAN</td><td>$d[tgl_bimbingan]</td></tr>";
 
-                        if($d['gender']=="L"){
-                                $jk="Laki-laki";
-                            }else{
-                                $jk="Perempuan";
-                            }
-                         
-                        echo "<tr>
-                        <td>{$no}</td>
-                        <td>$d[nidn]</td>
-                        <td>$d[nama]</td>
-                        <td>$jk</td>
-                        <td>$d[email]</td>
-                        <td>
-                        <a href='../dosen?p=detaildosen&id_dosen=$d[id_dosen]' class='btn btn-sm btn-primary'>Detail</a>
-                        <a href='../dosen?p=editdosen&id_dosen=$d[id_dosen]' class='btn btn-sm btn-info'>Edit</a>
-                        <a href='../dosen?p=hapusdosen&id_dosen=$d[id_dosen]' class='btn btn-sm btn-danger' onclick='return confirm(\"Yakin Hapus Data?\")'>Hapus</a>
-                        </td>
-                        </tr>";
-                      }
-                      ?>                                      
+                                    
+                        }
+                        ?>
+
                     </table>
+                    <a href="javascript:history.back(-1)" class="btn btn-secondary">Kembali</a>
+                  </div>
                   </div>
                   <!--end::Card Header-->
                   <!--begin::Card Body-->

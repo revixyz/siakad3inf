@@ -41,6 +41,18 @@ switch ($p){
     case 'admin';
         require_once "admin.php";
         break;
+    case 'tambahadmin';
+        require_once "tambahadmin.php";
+        break;
+    case 'detailadmin';
+        require_once "detailadmin.php";   
+        break;
+    case 'editadmin';
+        require_once "editadmin.php";
+        break;
+    case 'hapusadmin';
+        require_once "hapusadmin.php";  
+        break;
 
         
     case 'gantipwd';

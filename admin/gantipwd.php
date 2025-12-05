@@ -1,6 +1,4 @@
-<?php
-error_reporting(0);
-?>
+
 
 <main class="app-main">
         <!--begin::App Content Header-->
@@ -10,7 +8,7 @@ error_reporting(0);
             <!--begin::Row-->
             <div class="row">
               <!--begin::Col-->
-              
+              <!-- <div class="col-sm-6"><h3 class="mb-0">Tambah Mahasiswa</h3></div> -->
               <!--end::Col-->
               
             </div>
@@ -28,68 +26,40 @@ error_reporting(0);
               <!--begin::Col-->
               <div class="col-12">
                 <!--begin::Card-->
-                <div class="card">
-                  <!--begin::Card Header-->
-                  <div class="card-header">
-                    <!--begin::Card Title-->
-                    <h3 class="card-title"></h3>
-                 
-                    <!--end::Card Title-->
-                    <!--begin::Card Toolbar-->
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        title="Remove"
-                      >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
-                    </div>
-                    <!--end::Card Toolbar-->
-                  </div>
-                  <!--end::Card Header-->
-                  <!--begin::Card Body-->
-                  
-                  <!--end::Card Body-->
-                  <form action="#" method="post">
-              <table>
-                <tr>
-                    <td>Password Lama</td>
-                    <td><input type="password" name="pwdLama" required class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Password Baru</td>
-                    <td><input type="password" name="pwdBaru1" required class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Konfirmasi Password Baru</td>
-                    <td><input type="password" name="pwdBaru2" required class="form-control"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" name="ganti" value="Ganti Password" class="btn btn-primary"></td>
-              </table>
-              </form>
-              <div>
-                <?php 
-                if($_POST['btnsimpan']){
-                  $pwdBaru1 = $_POST['pwdBaru1'];
-                  $pwdBaru2 = $_POST['pwdBaru2'];
 
-                  if($pwdBaru1 != $pwdBaru2){
-                    echo"<script>alert('Password Baru tidak sesuai');</script>";
-                  } else{
-                    echo"<script>alert('Password Baru sesuai');</script>";
-                  }
-                }
-                ?>
-              </div>
-                </div>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Ganti Password</h3>
+                        </div>
+
+                        
+
+                        <div class="card-body">
+                            <form action="" method="POST">
+                            <div class="form-group">
+                                <label for="password_lama">Password Lama</label>
+                                <input type="password" name="password_lama" id="password_lama" class="form-control" placeholder="Masukkan Password Lama" required>
+                            </div><br>
+
+                            <div class="form-group">
+                                <label for="password_baru">Password Baru</label>
+                                <input type="password" name="password_baru" id="password_baru" class="form-control" placeholder="Masukkan Password Baru" required>
+                            </div><br>
+
+                            <div class="form-group">
+                                <label for="konfirmasi_password">Konfirmasi Password</label>
+                                <input type="password" name="konfirmasi_password" id="konfirmasi_password" class="form-control" placeholder="Konfirmasi Password Baru" required>  
+                            </div><br><br>
+
+                            <button type="submit"  name="simpan" class="btn btn-primary" value="Simpan">Simpan</button>
+                            <a href="javascript:history.back(-1)" class="btn btn-secondary">Kembali</a>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </section>
                 <!--end::Card-->
                 
                 

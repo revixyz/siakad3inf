@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 require_once "../config.php";
 $data=$db->query("SELECT * FROM mhs");
 
@@ -98,7 +100,7 @@ $jumlah = $data->num_rows;
                     </div>
                     <!--end::Card Toolbar-->
                     <table><tr><td>
-                      <a href="../admin?p=tambahmhs" class="btn btn-sm btn-success mb-3">Tambah</a>
+                      <a href="../mahasiswa?p=tambahmhs" class="btn btn-sm btn-success mb-3">Tambah</a>
                     </td><td>
                     <form method="POST" action="" class="d-flex mb-3 ms-2">
                       <input type="text" name="keyword" class="form-control form-control-sm" placeholder="Search..." value='<?=$keyword?>' >
@@ -157,9 +159,9 @@ $jumlah = $data->num_rows;
                         <td>$d[alamat]</td>
                         <td>$d[prodi]</td>
                         <td>
-                        <a href='../admin?p=detailmhs&id=$d[id]' class='btn btn-sm btn-primary'>Detail</a>
-                        <a href='../admin?p=editmhs&id=$d[id]' class='btn btn-sm btn-info'>Edit</a>
-                        <a href='../admin?p=hapusmhs&id=$d[id]' class='btn btn-sm btn-danger' onclick='return confirm(\"Yakin Hapus Data?\")'>Hapus</a>
+                        <a href='../mahasiswa?p=detailmhs&id=$d[id]' class='btn btn-sm btn-primary'>Detail</a>
+                        <a href='../mahasiswa?p=editmhs&id=$d[id]' class='btn btn-sm btn-info'>Edit</a>
+                        <a href='../mahasiswa?p=hapusmhs&id=$d[id]' class='btn btn-sm btn-danger' onclick='return confirm(\"Yakin Hapus Data?\")'>Hapus</a>
                         </td>
                         </tr>";
                       }
