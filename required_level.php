@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 function require_level($required_level): void{
     if (!isset($_SESSION['isLogin']) || $_SESSION['isLogin'] !== true){
         header("Location: ../index.php");
